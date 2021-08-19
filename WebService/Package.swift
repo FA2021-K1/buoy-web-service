@@ -1,31 +1,34 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.4
 
 import PackageDescription
 
 
 let package = Package(
-    name: "WebService",
+    name: "Demo",
     platforms: [
-        .macOS(.v12)
+        .macOS(.v10_15)
     ],
     products: [
-        .executable(name: "WebService", targets: ["WebService"])
+        .executable(
+            name: "Demo",
+            targets: ["Demo"]
+        )
     ],
     dependencies: [
-        .package(url: "https://github.com/Apodini/Apodini.git", .revision("d68e398166acc43308fecd5ed0529a7bca66dc9e")),
-        .package(name: "Shared", path: "../Shared")
+        .package(url: "https://github.com/Apodini/Apodini.git", .upToNextMinor(from: "0.3.0"))
     ],
     targets: [
         .executableTarget(
-            name: "WebService",
+            name: "Demo",
             dependencies: [
                 .product(name: "Apodini", package: "Apodini"),
                 .product(name: "ApodiniREST", package: "Apodini"),
-                .product(name: "ApodiniAuthorization", package: "Apodini"),
-                .product(name: "ApodiniAuthorizationBasicScheme", package: "Apodini"),
-                .product(name: "ApodiniAuthorizationBearerScheme", package: "Apodini"),
-                .product(name: "XpenseModel", package: "Shared")
+                .product(name: "ApodiniOpenAPI", package: "Apodini")
             ]
+        ),
+        .testTarget(
+            name: "DemoTests",
+            dependencies: ["Demo"]
         )
     ]
 )
