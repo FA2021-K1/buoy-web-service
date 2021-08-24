@@ -1,4 +1,4 @@
-// swift-tools-version:5.4
+// swift-tools-version:5.5
 
 import PackageDescription
 
@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Demo",
     platforms: [
-        .macOS(.v10_15)
+        .macOS(.v12)
     ],
     products: [
         .executable(
@@ -15,7 +15,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/Apodini/Apodini.git", .upToNextMinor(from: "0.3.0"))
+        .package(url: "https://github.com/Apodini/Apodini.git", .upToNextMinor(from: "0.5.0"))
     ],
     targets: [
         .executableTarget(
@@ -28,7 +28,9 @@ let package = Package(
         ),
         .testTarget(
             name: "DemoTests",
-            dependencies: ["Demo"]
+            dependencies: [
+                .target(name: "Demo")
+            ]
         )
     ]
 )
