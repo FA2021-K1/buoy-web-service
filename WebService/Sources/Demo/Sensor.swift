@@ -7,7 +7,6 @@ struct Sensor: Handler {
         List of sensors:
         pH
         """
-        
     }
 
     var content: some Component {

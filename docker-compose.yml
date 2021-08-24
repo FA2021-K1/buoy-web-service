@@ -1,10 +1,10 @@
 version: '3.9'
 
 services:
-  # An Apodini Xpense Web Service
-  xpense-web-service:
-    container_name: "xpense-web-service"
-    image: "ghcr.io/apodini/xpensewebservice:latest"
+  # An Apodini Buoy Web Service
+  buoy-web-service:
+    container_name: "buoy-web-service"
+    image: "ghcr.io/apodini/buoywebservice:latest"
     expose:
       - "80"
     # Pass the desired port and the path to the mounted database volume to the Apodini web service
