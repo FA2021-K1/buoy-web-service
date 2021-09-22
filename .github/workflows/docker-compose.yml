@@ -21,7 +21,7 @@ jobs:
       - name: Test web service
         run: |
           sleep 3
-          curl -k https://localhost/v1/sensors
+          curl http://localhost/v1/sensors
       - name: Stop containers
         if: always()
         run: docker-compose down

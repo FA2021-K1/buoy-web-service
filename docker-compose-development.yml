@@ -10,7 +10,7 @@ services:
       dockerfile: ./WebService/Dockerfile
     # Expose port 8080 of container on port 443 of host
     ports:
-      - "443:8080"
+      - "80:80"
     # Mount directory for config and sensor data
     volumes:
       - ../buoy:/buoy
