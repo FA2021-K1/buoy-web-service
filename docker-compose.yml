@@ -5,11 +5,9 @@ services:
   buoy-web-service:
     container_name: "buoy-web-service"
     image: "ghcr.io/fa21-collaborative-drone-interactions/buoywebservice:latest"
-    # Expose port 80 of container on port 80 of host
+    # Expose port 8080 of container on port 443 of host
     ports:
-      - "80:80"
+      - "443:8080"
     # Mount directory for config and sensor data
     volumes:
       - ../buoy:/buoy
-    # Pass the desired port and the path to the mounted database volume to the Apodini web service
-    command: ["--port", "80"]
