@@ -12,6 +12,7 @@ struct DemoWebService: WebService {
     
     var configuration: Configuration {
         HTTPConfiguration(port: port)
+        HTTP2Configuration(cert: "/buoy/cert.pem", keyPath: "/buoy/key.pem")
         REST {
             OpenAPI()
         }
