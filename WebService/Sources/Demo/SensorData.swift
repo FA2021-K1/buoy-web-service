@@ -19,7 +19,7 @@ struct Location: Content, Decodable {
     var longitude: Double
 }
 
-struct Hello: Handler {
+struct SensorData: Handler {
     func handle() -> SensorDump? {
         do {
             return try JSONDecoder().decode(SensorDump.self, from: try Data(contentsOf: URL(fileURLWithPath: "/buoy/test.json")))
