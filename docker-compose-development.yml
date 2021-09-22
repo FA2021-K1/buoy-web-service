@@ -8,7 +8,11 @@ services:
     build:
       context: ./
       dockerfile: ./WebService/Dockerfile
+    # Expose port 80 of container on port 80 of host
     ports:
       - "80:80"
+    # Mount directory for config and sensor data
+    volumes:
+      - ../buoy:/buoy
     # Pass the desired port and the path to the mounted database volume to the Apodini web service
     command: ["--port", "80"]
