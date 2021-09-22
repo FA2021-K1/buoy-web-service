@@ -7,7 +7,7 @@ struct MeasurementItem: Content, Decodable {
     var measurement: Double
 }
 
-struct JSONStructure: Content, Decodable {
+struct SensorDump: Content, Decodable {
     var buoyId: Int
     var date: String
     var location: Location
@@ -20,9 +20,11 @@ struct Location: Content, Decodable {
 }
 
 struct Hello: Handler {
-    func handle() -> JSONStructure {
-        let contents = try! JSONDecoder().decode(JSONStructure.self, from: try! Data(contentsOf: URL(fileURLWithPath: "/buoy/test.json")))
-        
-        return contents
+    func handle() -> SensorDump? {
+        do {
+            return try JSONDecoder().decode(SensorDump.self, from: try Data(contentsOf: URL(fileURLWithPath: "/buoy/test.json")))
+        } catch {
+            return nil
+        }
     }
 }
