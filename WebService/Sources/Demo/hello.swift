@@ -1,38 +1,39 @@
 import Apodini
 import Foundation
 
+struct mItems: Content, Decodable {
+    var sensorID: Int
+    var sensorType: Int
+    var measurement: Double
+}
+
+struct JSONStructure: Content, Decodable {
+    var buoyId: Int
+    var date: String
+    var location: Location
+    var measurements: [mItems]
+}
+
+struct Location: Content, Decodable {
+    var latitude: Double
+    var longitude: Double
+}
 
 struct Hello: Handler {
 
-    func handle() -> [String:String] {
-        let file = "/buoy/hello.json"
-        let fileData: String
-        var result: [String: String] = [:]
-
-        //check if file is valid
-        do {
-            fileData = try String(contentsOfFile: file, encoding: .utf8);
-        } catch {
-            fileData = "Error"
-        }
+    func handle() -> JSONStructure {
         
-        if fileData == "Error" {
-            result["Error"] = "Invalid File"
-        }
-
-        //Proceed with the dictionary conversion
-        else {
-            result = convertStringToDictionary(text: fileData)
-            //result["Error"] = "Invalid File"
-        }
-
-        return result
+        // Do it like this 
+        let contents = try! JSONDecoder().decode(JSONStructure.self, from: try! Data(contentsOf: URL(fileURLWithPath: "/buoy/test.json")))
+        
+        return contents
 
     }
 }
 
 
-func convertStringToDictionary(text: String) -> [String:String] {
+/*func convertStringToDictionary(text: String) -> [String:String] {
+    
     var result: [String:String] = [:] 
     if let data = text.data(using: .utf8) {
          
@@ -44,4 +45,4 @@ func convertStringToDictionary(text: String) -> [String:String] {
     }
 
     return result
-}
+}*/
