@@ -1,47 +1,28 @@
 import Apodini
 import Foundation
 
-
-struct Hello: Handler {
-
-    func handle() -> [String:String] {
-        let file = "/buoy/hello.json"
-        let fileData: String
-        var result: [String: String] = [:]
-
-        //check if file is valid
-        do {
-            fileData = try String(contentsOfFile: file, encoding: .utf8);
-        } catch {
-            fileData = "Error"
-        }
-        
-        if fileData == "Error" {
-            result["Error"] = "Invalid File"
-        }
-
-        //Proceed with the dictionary conversion
-        else {
-            result = convertStringToDictionary(text: fileData)
-            //result["Error"] = "Invalid File"
-        }
-
-        return result
-
-    }
+struct MeasurementItem: Content, Decodable {
+    var sensorID: Int
+    var sensorType: Int
+    var measurement: Double
 }
 
+struct JSONStructure: Content, Decodable {
+    var buoyId: Int
+    var date: String
+    var location: Location
+    var measurements: [MeasurementItem]
+}
 
-func convertStringToDictionary(text: String) -> [String:String] {
-    var result: [String:String] = [:] 
-    if let data = text.data(using: .utf8) {
-         
-        do {
-            result = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:String]
-        } catch {
-            result["Error"] = "Invalid JSON"
-        }
+struct Location: Content, Decodable {
+    var latitude: Double
+    var longitude: Double
+}
+
+struct Hello: Handler {
+    func handle() -> JSONStructure {
+        let contents = try! JSONDecoder().decode(JSONStructure.self, from: try! Data(contentsOf: URL(fileURLWithPath: "/buoy/test.json")))
+        
+        return contents
     }
-
-    return result
 }
