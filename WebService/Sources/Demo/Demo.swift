@@ -17,5 +17,9 @@ struct DemoWebService: WebService {
         Group("sensors") {
             Sensor()
         }
+
+        Group("hello") {
+            Hello()
+        }
     }
 }
