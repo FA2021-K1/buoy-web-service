@@ -22,7 +22,7 @@ struct Location: Content, Decodable {
 struct SensorData: Handler {
     func handle() -> SensorDump? {
         do {
-            return try JSONDecoder().decode(SensorDump.self, from: try Data(contentsOf: URL(fileURLWithPath: "/buoy/test.json")))
+            return try JSONDecoder().decode(SensorDump.self, from: try Data(contentsOf: URL(fileURLWithPath: "/buoy/data/measurements.json")))
         } catch {
             return nil
         }
