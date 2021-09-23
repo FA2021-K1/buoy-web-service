@@ -20,11 +20,16 @@ struct Location: Content, Decodable {
 }
 
 struct SensorData: Handler {
-    func handle() -> SensorDump? {
-        do {
-            return try JSONDecoder().decode(SensorDump.self, from: try Data(contentsOf: URL(fileURLWithPath: "/buoy/data/measurements.json")))
-        } catch {
-            return nil
+    func handle() -> [SensorDump] {
+        let dirPath = "/buoy/data"
+        guard let files = try? FileManager.default.contentsOfDirectory(atPath: dirPath) else {
+            return []
+        }
+        return files.compactMap {fileName in
+            guard let data = try? Data(contentsOf: URL(fileURLWithPath: dirPath + "/" + fileName)) else {
+                return nil
+            }
+            return try? JSONDecoder().decode(SensorDump.self, from: data)
         }
     }
 }
