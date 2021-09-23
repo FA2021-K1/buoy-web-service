@@ -24,9 +24,5 @@ struct DemoWebService: WebService {
         Group("data") {
             SensorData()
         }
-
-        Group("latest_file") {
-            LatestFile()
-        }
     }
 }
