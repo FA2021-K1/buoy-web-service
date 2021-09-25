@@ -7,8 +7,12 @@ protocol MeasurementConverter {
 
 func getMeasurementConverterInstance(sensorType: SensorType) -> MeasurementConverter {
     switch sensorType {
+    case TemperatureSensor.sensorType:
+        return PolynomialMeasurementConverter(configFilePath: "sensorconfig/TemperatureSensor.json")
     case ConductivitySensor.sensorType:
         return PolynomialMeasurementConverter(configFilePath: "sensorconfig/ConductivitySensor.json")
+    case PhSensor.sensorType:
+        return PolynomialMeasurementConverter(configFilePath: "sensorconfig/PhSensor.json")
     default:
         return NoopConverter()
     }
