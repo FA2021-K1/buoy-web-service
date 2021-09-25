@@ -1,0 +1,53 @@
+import Apodini
+
+struct SensorDump: Content, Decodable {
+    var buoyId: Int
+    var date: String
+    var location: Location
+    var measurements: [MeasurementItem]
+
+    func filteredBySensorType(_ sensorType: SensorType) -> SensorDump {
+        SensorDump(
+            buoyId: self.buoyId,
+            date: self.date,
+            location: self.location,
+            measurements: self.measurements.filter { $0.sensorType == sensorType }
+        )
+    }
+
+    func convertMeasurements(_ converter: MeasurementConverter) -> SensorDump {
+        SensorDump(
+            buoyId: self.buoyId,
+            date: self.date,
+            location: self.location,
+            measurements: self.measurements.map { item in
+                MeasurementItem(sensorID: item.sensorID, sensorType: item.sensorType, measurement: converter.convert(rawValue: item.measurement))
+            }
+        )
+    }
+}
+
+struct Location: Content, Decodable {
+    var latitude: Double
+    var longitude: Double
+}
+
+struct MeasurementItem: Content, Decodable {
+    var sensorID: Int
+    var sensorType: SensorType
+    var measurement: Double
+}
+
+enum SensorType: Int, Content, Decodable, CustomStringConvertible {
+    case TEMPERATURE
+    case CONDUCTIVITY
+    case POTENTIAHYDROGENII
+
+    var description: String {
+        switch self {
+        case .TEMPERATURE: return "temperature"
+        case .CONDUCTIVITY: return "conductivity"
+        case .POTENTIAHYDROGENII: return "ph"
+        }
+    }
+}

@@ -1,35 +1,38 @@
 import Apodini
 import Foundation
 
-struct MeasurementItem: Content, Decodable {
-    var sensorID: Int
-    var sensorType: Int
-    var measurement: Double
-}
-
-struct SensorDump: Content, Decodable {
-    var buoyId: Int
-    var date: String
-    var location: Location
-    var measurements: [MeasurementItem]
-}
-
-struct Location: Content, Decodable {
-    var latitude: Double
-    var longitude: Double
-}
 
 struct SensorData: Handler {
+    static let dirPath = "data"
+
     func handle() -> [SensorDump] {
-        let dirPath = "/buoy/data"
-        guard let files = try? FileManager.default.contentsOfDirectory(atPath: dirPath) else {
-            return []
-        }
-        return files.compactMap {fileName in
-            guard let data = try? Data(contentsOf: URL(fileURLWithPath: dirPath + "/" + fileName)) else {
-                return nil
+        readJSONDirectory(SensorDump.self, dirPath: Self.dirPath)
+            .map {
+                SensorDump(
+                    buoyId: $0.buoyId,
+                    date: $0.date,
+                    location: $0.location,
+                    measurements: $0.measurements.map { item in
+                        MeasurementItem(
+                            sensorID: item.sensorID,
+                            sensorType: item.sensorType,
+                            measurement: getMeasurementConverterInstance(sensorType: item.sensorType).convert(rawValue: item.measurement))
+                    }
+                )
             }
-            return try? JSONDecoder().decode(SensorDump.self, from: data)
+    }
+
+    var content: some Component {
+        Group(TemperatureSensor.sensorType.description) {
+            TemperatureSensor()
+        }
+
+        Group(ConductivitySensor.sensorType.description) {
+            ConductivitySensor()
+        }
+
+        Group(PhSensor.sensorType.description) {
+            PhSensor()
         }
     }
 }

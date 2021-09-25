@@ -1,17 +1,9 @@
 import Apodini
+import Foundation
 
 
 struct Sensor: Handler {
-    func handle() -> String {
-        """
-        List of sensors:
-        pH
-        """
-    }
-
-    var content: some Component {
-        Group("ph") {
-            PhSensor()
-        }
+    func handle() -> [Int] {
+        readJSONFromFile([Int].self, filePath: "available_sensors.json") ?? []
     }
 }
