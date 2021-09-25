@@ -5,10 +5,10 @@ protocol MeasurementConverter {
     func convert(rawValue: Double) -> Double
 }
 
-func getMeasurementConverterInstance(sensorType: Int) -> MeasurementConverter {
+func getMeasurementConverterInstance(sensorType: SensorType) -> MeasurementConverter {
     switch sensorType {
-    case TDSSensor.sensorType:
-        return PolynomialMeasurementConverter(configFilePath: "sensorconfig/TDSSensor.json")
+    case ConductivitySensor.sensorType:
+        return PolynomialMeasurementConverter(configFilePath: "sensorconfig/ConductivitySensor.json")
     default:
         return NoopConverter()
     }

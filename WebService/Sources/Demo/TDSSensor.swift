@@ -2,9 +2,9 @@ import Apodini
 import Foundation
 
 
-struct TDSSensor: Handler {
+struct ConductivitySensor: Handler {
     static let dirPath = "data"
-    static let sensorType = 1
+    static let sensorType: SensorType = .CONDUCTIVITY
     static let converter = getMeasurementConverterInstance(sensorType: Self.sensorType)
 
     func handle() -> [SensorDump] {

@@ -23,8 +23,8 @@ struct SensorData: Handler {
     }
 
     var content: some Component {
-        Group(String(TDSSensor.sensorType)) {
-            TDSSensor()
+        Group(ConductivitySensor.sensorType.description) {
+            ConductivitySensor()
         }
     }
 }

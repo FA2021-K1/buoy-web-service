@@ -6,7 +6,7 @@ struct SensorDump: Content, Decodable {
     var location: Location
     var measurements: [MeasurementItem]
 
-    func filteredBySensorType(_ sensorType: Int) -> SensorDump {
+    func filteredBySensorType(_ sensorType: SensorType) -> SensorDump {
         SensorDump(
             buoyId: self.buoyId,
             date: self.date,
@@ -34,6 +34,20 @@ struct Location: Content, Decodable {
 
 struct MeasurementItem: Content, Decodable {
     var sensorID: Int
-    var sensorType: Int
+    var sensorType: SensorType
     var measurement: Double
+}
+
+enum SensorType: Int, Content, Decodable, CustomStringConvertible {
+    case TEMPERATURE
+    case CONDUCTIVITY
+    case POTENTIAHYDROGENII
+
+    var description: String {
+        switch self {
+        case .TEMPERATURE: return "temperature"
+        case .CONDUCTIVITY: return "conductivity"
+        case .POTENTIAHYDROGENII: return "ph"
+        }
+    }
 }
