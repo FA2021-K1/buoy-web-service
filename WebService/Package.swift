@@ -4,14 +4,14 @@ import PackageDescription
 
 
 let package = Package(
-    name: "Demo",
+    name: "Buoy",
     platforms: [
         .macOS(.v12)
     ],
     products: [
         .executable(
-            name: "Demo",
-            targets: ["Demo"]
+            name: "Buoy",
+            targets: ["Buoy"]
         )
     ],
     dependencies: [
@@ -19,7 +19,7 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
-            name: "Demo",
+            name: "Buoy",
             dependencies: [
                 .product(name: "Apodini", package: "Apodini"),
                 .product(name: "ApodiniREST", package: "Apodini"),
@@ -27,9 +27,9 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "DemoTests",
+            name: "BuoyTests",
             dependencies: [
-                .target(name: "Demo")
+                .target(name: "Buoy")
             ]
         )
     ]
