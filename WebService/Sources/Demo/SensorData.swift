@@ -23,8 +23,16 @@ struct SensorData: Handler {
     }
 
     var content: some Component {
+        Group(TemperatureSensor.sensorType.description) {
+            TemperatureSensor()
+        }
+
         Group(ConductivitySensor.sensorType.description) {
             ConductivitySensor()
+        }
+
+        Group(PhSensor.sensorType.description) {
+            PhSensor()
         }
     }
 }
