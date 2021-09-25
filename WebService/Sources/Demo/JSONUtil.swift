@@ -20,6 +20,6 @@ func readJSONDirectory<T>(_ type: T.Type, dirPath: String) -> [T] where T: Decod
         return []
     }
     return files.compactMap {fileURL in
-        return readJSONFromFile(T.self, fileURL: fileURL)
+        readJSONFromFile(T.self, fileURL: fileURL)
     }
 }
