@@ -15,7 +15,8 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/Apodini/Apodini.git", .upToNextMinor(from: "0.5.0"))
+        .package(url: "https://github.com/Apodini/Apodini.git", .upToNextMinor(from: "0.5.0")),
+        .package(name: "buoy-deployment-provider", url: "https://github.com/fa21-collaborative-drone-interactions/buoy-deployment-provider", .branch("develop"))
     ],
     targets: [
         .executableTarget(
@@ -23,7 +24,8 @@ let package = Package(
             dependencies: [
                 .product(name: "Apodini", package: "Apodini"),
                 .product(name: "ApodiniREST", package: "Apodini"),
-                .product(name: "ApodiniOpenAPI", package: "Apodini")
+                .product(name: "ApodiniOpenAPI", package: "Apodini"),
+                .product(name: "BuoyDeploymentOption", package: "buoy-deployment-provider")
             ]
         ),
         .testTarget(

@@ -1,4 +1,5 @@
 import Apodini
+import BuoyDeploymentOption
 import Foundation
 
 
@@ -25,14 +26,23 @@ struct SensorData: Handler {
     var content: some Component {
         Group(TemperatureSensor.sensorType.description) {
             TemperatureSensor()
+                .metadata(
+                    DeploymentDevice(.temperature)
+                )
         }
 
         Group(ConductivitySensor.sensorType.description) {
             ConductivitySensor()
+                .metadata(
+                    DeploymentDevice(.conductivity)
+                )
         }
 
         Group(PhSensor.sensorType.description) {
             PhSensor()
+                .metadata(
+                    DeploymentDevice(.ph)
+                )
         }
     }
 }
