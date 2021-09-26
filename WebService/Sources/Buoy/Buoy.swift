@@ -5,7 +5,7 @@ import ArgumentParser
 
 
 @main
-struct DemoWebService: WebService {
+struct BuoyWebService: WebService {
     @Option(help: "The port the web service is offered at")
     var port: Int = 80
 
