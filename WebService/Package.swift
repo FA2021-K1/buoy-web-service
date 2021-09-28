@@ -22,8 +22,7 @@ let package = Package(
             name: "Buoy",
             dependencies: [
                 .product(name: "Apodini", package: "Apodini"),
-                .product(name: "ApodiniREST", package: "Apodini"),
-                .product(name: "ApodiniOpenAPI", package: "Apodini")
+                .product(name: "ApodiniHTTP", package: "Apodini")
             ]
         ),
         .testTarget(

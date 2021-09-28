@@ -1,6 +1,5 @@
 import Apodini
-import ApodiniOpenAPI
-import ApodiniREST
+import ApodiniHTTP
 import ArgumentParser
 
 
@@ -11,9 +10,7 @@ struct BuoyWebService: WebService {
 
     var configuration: Configuration {
         HTTPConfiguration(port: port)
-        REST {
-            OpenAPI()
-        }
+        HTTP()
     }
 
     var content: some Component {
