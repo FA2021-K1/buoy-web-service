@@ -15,7 +15,7 @@ jobs:
     name: Linux ARM WebService
     runs-on: ARM64
     container:
-      image: swiftlang/swift:nightly-focal
+      image: swiftlang/swift@sha256:59fd39504339a0c0b24a304bb50028ff679bf60b45f25f6acd42b0530a1188c6
     defaults:
       run:
         working-directory: ./WebService
