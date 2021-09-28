@@ -23,8 +23,8 @@
         "package": "ApodiniIoTDeploymentProvider",
         "repositoryURL": "https://github.com/Lerbert/ApodiniIoTDeploymentProvider",
         "state": {
-          "branch": "Expose-DeploymentTargetIoTCommon",
-          "revision": "26d21f5109aa6d65362e737438d46a6407f56689",
+          "branch": "docker-compose",
+          "revision": "f66e756ed6106e91ba2553172874c11ab4e6c383",
           "version": null
         }
       },
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/vapor/async-kit.git",
         "state": {
           "branch": null,
-          "revision": "8ec02e274b70afe9e6d2f39c49b7491d76cbc128",
-          "version": "1.8.0"
+          "revision": "f6f92e6d3704bd72ffb4d00e302c98476fe65854",
+          "version": "1.9.0"
         }
       },
       {
@@ -78,7 +78,7 @@
         "repositoryURL": "https://github.com/fa21-collaborative-drone-interactions/buoy-deployment-provider",
         "state": {
           "branch": "develop",
-          "revision": "06b507ac53adbc87a0a96a931b374ee5646ee150",
+          "revision": "2d44a4df3b5a3e7e376b5c9f1f841a9cca9593c3",
           "version": null
         }
       },
