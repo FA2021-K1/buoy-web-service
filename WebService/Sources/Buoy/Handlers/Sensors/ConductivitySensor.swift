@@ -10,9 +10,7 @@ struct ConductivitySensor: Component {
                 .operation(.update)
         }
 
-        Group("data") {
-            ConductivitySensorData()
-        }
+        ConductivitySensorData()
     }
 }
 

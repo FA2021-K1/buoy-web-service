@@ -11,9 +11,7 @@ struct TemperatureSensor: Component {
                 .operation(.update)
         }
 
-        Group("data") {
-            TemperatureSensorData()
-        }
+        TemperatureSensorData()
     }
 }
 

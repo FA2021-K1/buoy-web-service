@@ -11,9 +11,7 @@ struct PhSensor: Component {
                 .operation(.update)
         }
 
-        Group("data") {
-            PhSensorData()
-        }
+        PhSensorData()
     }
 }
 
