@@ -23,3 +23,12 @@ func readJSONDirectory<T>(_ type: T.Type, dirPath: String) -> [T] where T: Decod
         readJSONFromFile(T.self, fileURL: fileURL)
     }
 }
+
+func writeJSONToFile<T>(_ type: T.Type, filePath: String, content: T) throws where T: Encodable {
+    try writeJSONToFile(type, fileURL: mountDir.appendingPathComponent(filePath), content: content)
+}
+
+func writeJSONToFile<T>(_ type: T.Type, fileURL: URL, content: T) throws where T: Encodable {
+    let data = try JSONEncoder().encode(content)
+    try data.write(to: fileURL)
+}
