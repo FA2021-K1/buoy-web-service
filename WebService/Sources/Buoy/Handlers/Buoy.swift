@@ -17,9 +17,5 @@ struct BuoyWebService: WebService {
         Group("sensors") {
             Sensor()
         }
-
-        Group("data") {
-            SensorData()
-        }
     }
 }
