@@ -1,7 +1,7 @@
 import Apodini
 
 struct SensorDump: Content, Decodable {
-    var buoyId: Int
+    var buoyID: Int
     var date: String
     var location: Location
     var measurements: [MeasurementItem]
