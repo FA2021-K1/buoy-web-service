@@ -14,7 +14,7 @@ struct ConductivitySensor: Component {
     }
 }
 
-struct ConductivitySensorCalibration: SensorCalibrationHandler {
+struct ConductivitySensorCalibration: PolynomialSensorCalibrationHandler {
     static let filePath = "sensorconfig/ConductivitySensor.json"
     static let sensorType: SensorType = ConductivitySensor.sensorType
 
@@ -23,15 +23,6 @@ struct ConductivitySensorCalibration: SensorCalibrationHandler {
 
     @Throws(.serverError, reason: "Calibration couldn't be saved correctly")
     var serverError: ApodiniError
-
-    func handle() throws -> [Double] {
-        do {
-            try writeJSONToFile([Double].self, filePath: Self.filePath, content: coeffs)
-            return coeffs
-        } catch {
-            throw serverError
-        }
-    }
 }
 
 struct ConductivitySensorData: SensorDataHandler {

@@ -21,3 +21,21 @@ protocol SensorCalibrationHandler: Handler {
     static var filePath: String { get }
     static var sensorType: SensorType { get }
 }
+
+protocol PolynomialSensorCalibrationHandler: SensorCalibrationHandler {
+    var coeffs: [Double] { get }
+    var serverError: ApodiniError { get }
+
+    func handle() throws -> [Double]
+}
+
+extension PolynomialSensorCalibrationHandler {
+    func handle() throws -> [Double] {
+        do {
+            try writeJSONToFile([Double].self, filePath: Self.filePath, content: coeffs)
+            return coeffs
+        } catch {
+            throw serverError
+        }
+    }
+}

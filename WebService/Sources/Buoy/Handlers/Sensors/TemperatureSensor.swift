@@ -15,7 +15,7 @@ struct TemperatureSensor: Component {
     }
 }
 
-struct TemperatureSensorCalibration: SensorCalibrationHandler {
+struct TemperatureSensorCalibration: PolynomialSensorCalibrationHandler {
     static let filePath = "sensorconfig/TemperatureSensor.json"
     static let sensorType: SensorType = TemperatureSensor.sensorType
 
@@ -24,15 +24,6 @@ struct TemperatureSensorCalibration: SensorCalibrationHandler {
 
     @Throws(.serverError, reason: "Calibration couldn't be saved correctly")
     var serverError: ApodiniError
-
-    func handle() throws -> [Double] {
-        do {
-            try writeJSONToFile([Double].self, filePath: Self.filePath, content: coeffs)
-            return coeffs
-        } catch {
-            throw serverError
-        }
-    }
 }
 
 struct TemperatureSensorData: SensorDataHandler {

@@ -15,7 +15,7 @@ struct PhSensor: Component {
     }
 }
 
-struct PhSensorCalibration: SensorCalibrationHandler {
+struct PhSensorCalibration: PolynomialSensorCalibrationHandler {
     static let filePath = "sensorconfig/PhSensor.json"
     static let sensorType: SensorType = PhSensor.sensorType
 
@@ -24,15 +24,6 @@ struct PhSensorCalibration: SensorCalibrationHandler {
 
     @Throws(.serverError, reason: "Calibration couldn't be saved correctly")
     var serverError: ApodiniError
-
-    func handle() throws -> [Double] {
-        do {
-            try writeJSONToFile([Double].self, filePath: Self.filePath, content: coeffs)
-            return coeffs
-        } catch {
-            throw serverError
-        }
-    }
 }
 
 struct PhSensorData: SensorDataHandler {
