@@ -9,7 +9,7 @@ struct SensorData: Handler {
         readJSONDirectory(SensorDump.self, dirPath: Self.dirPath)
             .map {
                 SensorDump(
-                    buoyId: $0.buoyId,
+                    buoyID: $0.buoyID,
                     date: $0.date,
                     location: $0.location,
                     measurements: $0.measurements.map { item in

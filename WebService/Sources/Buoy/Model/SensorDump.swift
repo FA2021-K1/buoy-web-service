@@ -8,7 +8,7 @@ struct SensorDump: Content, Decodable {
 
     func filteredBySensorType(_ sensorType: SensorType) -> SensorDump {
         SensorDump(
-            buoyId: self.buoyId,
+            buoyID: self.buoyID,
             date: self.date,
             location: self.location,
             measurements: self.measurements.filter { $0.sensorType == sensorType }
@@ -17,7 +17,7 @@ struct SensorDump: Content, Decodable {
 
     func convertMeasurements(_ converter: MeasurementConverter) -> SensorDump {
         SensorDump(
-            buoyId: self.buoyId,
+            buoyID: self.buoyID,
             date: self.date,
             location: self.location,
             measurements: self.measurements.map { item in
