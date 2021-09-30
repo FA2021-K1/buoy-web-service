@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "ApodiniIoTDeploymentProvider",
+        "repositoryURL": "https://github.com/Lerbert/ApodiniIoTDeploymentProvider",
+        "state": {
+          "branch": "docker-compose",
+          "revision": "f66e756ed6106e91ba2553172874c11ab4e6c383",
+          "version": null
+        }
+      },
+      {
         "package": "ApodiniMigrator",
         "repositoryURL": "https://github.com/Apodini/ApodiniMigrator.git",
         "state": {
@@ -60,8 +69,17 @@
         "repositoryURL": "https://github.com/vapor/async-kit.git",
         "state": {
           "branch": null,
-          "revision": "8ec02e274b70afe9e6d2f39c49b7491d76cbc128",
-          "version": "1.8.0"
+          "revision": "f6f92e6d3704bd72ffb4d00e302c98476fe65854",
+          "version": "1.9.0"
+        }
+      },
+      {
+        "package": "buoy-deployment-provider",
+        "repositoryURL": "https://github.com/fa21-collaborative-drone-interactions/buoy-deployment-provider",
+        "state": {
+          "branch": "develop",
+          "revision": "2d44a4df3b5a3e7e376b5c9f1f841a9cca9593c3",
+          "version": null
         }
       },
       {
@@ -143,6 +161,15 @@
           "branch": null,
           "revision": "30f53439b52587b016a5e5b3dce7f50f686681be",
           "version": "4.4.0"
+        }
+      },
+      {
+        "package": "NetService",
+        "repositoryURL": "https://github.com/Bouke/NetService.git",
+        "state": {
+          "branch": null,
+          "revision": "08e1f7663fd4b09b9f4ad165be89704c7cd2e3f8",
+          "version": "0.8.1"
         }
       },
       {
@@ -344,6 +371,42 @@
         }
       },
       {
+        "package": "swift-nio-ip",
+        "repositoryURL": "https://github.com/PSchmiedmayer/Swift-NIO-IP.git",
+        "state": {
+          "branch": null,
+          "revision": "598f56ec73fba0630a1b49c6ff97ac2e2d565a9e",
+          "version": "0.0.1"
+        }
+      },
+      {
+        "package": "swift-nio-lifx",
+        "repositoryURL": "https://github.com/hendesi/Swift-NIO-LIFX.git",
+        "state": {
+          "branch": "develop",
+          "revision": "c84af7276995920c26a06a9cb947d1f25a68ccda",
+          "version": null
+        }
+      },
+      {
+        "package": "swift-nio-lifx-impl",
+        "repositoryURL": "https://github.com/Apodini/Swift-NIO-LIFX-Impl",
+        "state": {
+          "branch": "develop",
+          "revision": "a672a896c0733c8585341e285c1f0aad1c3eaa1a",
+          "version": null
+        }
+      },
+      {
+        "package": "swift-nio-ssh",
+        "repositoryURL": "https://github.com/apple/swift-nio-ssh",
+        "state": {
+          "branch": null,
+          "revision": "bc1a91daf3ae35134fbca5655ed221668d0369d3",
+          "version": "0.3.0"
+        }
+      },
+      {
         "package": "swift-nio-ssl",
         "repositoryURL": "https://github.com/apple/swift-nio-ssl.git",
         "state": {
@@ -359,6 +422,15 @@
           "branch": null,
           "revision": "39587bceccda72780e2a8a8c5e857e42a9df2fa8",
           "version": "1.11.0"
+        }
+      },
+      {
+        "package": "swift-device-discovery",
+        "repositoryURL": "https://github.com/Apodini/SwiftDeviceDiscovery.git",
+        "state": {
+          "branch": "master",
+          "revision": "c23647eca77d8ce77ec9430bd7de64684ee1bea1",
+          "version": null
         }
       },
       {
